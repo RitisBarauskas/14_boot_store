@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Категории товаров{% endblock %}
+
+{% block content %}
+
+    <h1>Наши отделы</h1>
+    <ol>
+        {% for category in categories %}
+            <li>
+                CATEGORY ID: {{ category.id }}
+                <br>{{ category.name }}
+                <br><a href="{% url 'goods:goods_by_category' category.slug %}">Товары категории</a>
+            </li>
+            <hr>
+        {% endfor %}
+    </ol>
+
+{% endblock %}
