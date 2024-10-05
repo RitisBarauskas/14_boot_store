@@ -1,12 +1,11 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    {{ category.name }} - Товары
+    {{ user.first_name }}
 {% endblock %}
 
 {% block content %}
-    <h1>{{ category.name }}</h1>
-    <p>Добавил категорию: {{ category.author.first_name }}</p>
+    <h1>{{ user.first_name }} {{ user.last_name }}</h1>
     <hr>
     <ol>
         {% for good in goods %}

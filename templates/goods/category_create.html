@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Goods - Добавить категорию
+{% endblock %}
+
+{% block content %}
+    <h1>Добавить категорию</h1>
+    <form action="{% url 'goods:category_create' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Добавить</button>
+    </form>
+{% endblock %}

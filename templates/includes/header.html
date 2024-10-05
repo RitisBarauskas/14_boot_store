@@ -6,9 +6,9 @@
         </ul>
         <ul class="list-group list-group-horizontal-sm">
         {% if user.is_authenticated %}
-            <li class="list-group-item"><a href="">Добавить категорию</a></li>
-            <li class="list-group-item"><a href="">Добавить товар</a></li>
-            <li class="list-group-item"><a href="">Профиль</a></li>
+            <li class="list-group-item"><a href="{% url 'goods:category_create' %}">Добавить категорию</a></li>
+            <li class="list-group-item"><a href="{% url 'goods:good_create' %}">Добавить товар</a></li>
+            <li class="list-group-item"><a href="{% url 'goods:profile' %}">Профиль</a></li>
             <li class="list-group-item">Привет, <a href="">{{ user.first_name }}</a></li>
             <li class="list-group-item">
                 <form action="{% url 'users:logout' %}" method="post">

@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.db.models import Model, SlugField, CharField, ForeignKey, CASCADE, DateTimeField, TextField
 
 from goods.constants import (
@@ -6,10 +7,13 @@ from goods.constants import (
     MAX_LENGTH_DISPLAY_STR,
 )
 
+User = get_user_model()
+
 
 class Category(Model):
     slug = SlugField(verbose_name='Слаг', max_length=MAX_LENGTH_SLUG_FIELD, unique=True)
     name = CharField(verbose_name='Имя', max_length=MAX_LENGTH_CHAR_FIELD)
+    author = ForeignKey(User, verbose_name='Автор', on_delete=CASCADE, related_name='categories', blank=True, null=True)
 
     class Meta:
         verbose_name_plural = 'Категории'
@@ -26,6 +30,7 @@ class Good(Model):
     description = TextField(verbose_name='Описание', blank=True)
     created_at = DateTimeField(verbose_name='Дата создания', auto_now_add=True)
     updated_at = DateTimeField(verbose_name='Дата обновления', auto_now=True)
+    creator = ForeignKey(User, verbose_name='Создатель', on_delete=CASCADE, related_name='goods', blank=True, null=True)
 
     class Meta:
         verbose_name_plural = 'Товары'
