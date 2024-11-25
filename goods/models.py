@@ -31,6 +31,7 @@ class Good(Model):
     created_at = DateTimeField(verbose_name='Дата создания', auto_now_add=True)
     updated_at = DateTimeField(verbose_name='Дата обновления', auto_now=True)
     creator = ForeignKey(User, verbose_name='Создатель', on_delete=CASCADE, related_name='goods', blank=True, null=True)
+    moderator = ForeignKey(User, verbose_name='Модератор', on_delete=CASCADE, related_name='moderated_goods', blank=True, null=True)
 
     class Meta:
         verbose_name_plural = 'Товары'
